@@ -1,18 +1,18 @@
-﻿int [,] GenerateArray(int rows, int columns, int minrnd, int maxrnd)
+﻿int[,] GenerateArray(int rows, int columns, int minrnd, int maxrnd)
 {
-    int [,] array = new int [rows, columns];
+    int[,] array = new int[rows, columns];
     Random rnd = new Random();
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-          array[i, j] = rnd.Next(minrnd, maxrnd + 1);  
+            array[i, j] = rnd.Next(minrnd, maxrnd + 1);
         }
     }
     return array;
 }
 
-void PrintArray (int[,] matrix)
+void PrintArray(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -32,16 +32,16 @@ int Prompt(string message)
     return result;
 }
 
-(int, bool) IndexValue(int[,] array, int row, int column) 
+(int, bool) IndexValue(int[,] array, int row, int column)
 {
-  if (row < 0 && row > array.GetLength(0) && column < 0 && column > array.GetLength(1))
-  {
-    return (0, false);
-  }
-  else
-  {
-    return (array[row, column], true);
-  }
+    if (0 <= row && row < array.GetLength(0) && 0 <= column && column < array.GetLength(1))
+    {
+        return (array[row, column], true);
+    }
+    else
+    {
+        return (0, false);
+    }
 }
 
 int[,] NewArray = GenerateArray(5, 5, -100, 100);
